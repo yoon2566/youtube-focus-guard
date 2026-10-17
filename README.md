@@ -6,7 +6,11 @@
 
 - 접근성 이벤트 기반 유튜브 감지 및 홈 이동 코드 구현
 - 차단 ON/OFF, 권한 안내, 로컬 감지 기록 구현
-- **APK 빌드 및 실기기 테스트: 진행 중. 아직 성공 확인 전입니다.**
+- APK 빌드 성공, APK 서명 검증 성공, Android Lint 오류 0개 (경고 5개)
+- 차단 판별 로직 테스트 7개 통과
+- **실기기 테스트: 사용자 확인 대기. 실기기 동작 검증 완료가 아닙니다.**
+
+[APK 다운로드](https://github.com/yoon2566/youtube-focus-guard/releases/download/v0.1.0/youtube-focus-guard-v0.1.0.apk) · [릴리스](https://github.com/yoon2566/youtube-focus-guard/releases/tag/v0.1.0)
 
 ## 설치 및 사용
 
@@ -38,7 +42,7 @@ JDK 17, Android SDK Platform 35, Build Tools 35.0.0, Gradle 8.13, AGP 8.9.2.
 ```
 
 출력: `app/build/outputs/apk/debug/app-debug.apk` (개발용 서명 APK).
-Gradle Wrapper는 환경 준비 후 추가됩니다.
+Gradle Wrapper가 포함되어 있습니다. Windows에서 한글 경로 오류가 발생하면 영문 경로에 체크아웃하거나 `scripts/build-windows.ps1`을 사용하세요.
 
 ## 실기기 확인 항목
 
