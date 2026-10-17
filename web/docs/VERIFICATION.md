@@ -31,7 +31,13 @@ node tests/integration.mjs https://focus-forest-hackathon.yoon2566.workers.dev -
 - 브라우저 화면에 화면 켜짐 유지 성공 상태 표시 확인
 - 1분 체험의 실제 완료 화면, 포인트, 숲 기록, 일반 집중 통계에서 체험 제외 확인
 
-자동 테스트의 active:false 메시지 검증은 실제 기기에서 탭을 전환한 검증과 다릅니다. 브라우저 자동화 도구의 포커스 에뮬레이션 때문에 실제 visibilitychange 검증은 별도 확인이 필요합니다.
+- 최신 버전 Chrome에서 실제 탭 전환 확인: 10분 도전의 09:50 시점에 브라우저 포커스 에뮬레이션을 해제하고 다른 탭으로 전환 → 10:00으로 초기화, 처음부터 시작 버튼 표시. 이후 에뮬레이션 원복
+- 처음부터 시작 버튼으로 09:56까지 다시 진행 확인
+- 합성 음악 켜기/끄기 상태 및 종료 확인창의 계속 집중하기/도전 종료하기 확인
+- 공개 정적 파일 4개(index.html, app.js, style.css, tree.svg) HTTP 200 및 로컬 SHA-256 일치
+- GitHub Actions 웹 문법·13개 테스트·Worker dry-run 빌드 성공: https://github.com/yoon2566/youtube-focus-guard/actions/runs/39029695872
+
+![탭 전환 후 초기화 화면](tab-reset.png)
 
 ## 미검증
 
