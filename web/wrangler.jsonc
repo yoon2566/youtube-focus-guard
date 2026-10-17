@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "focus-forest-hackathon",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-10-01",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "durable_objects": { "bindings": [{ "name": "ROOMS", "class_name": "FocusRoom" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["FocusRoom"] }],
+  "observability": { "enabled": false }
+}
