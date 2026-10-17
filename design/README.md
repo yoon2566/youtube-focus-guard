@@ -28,4 +28,13 @@ Stitch 프로젝트: https://stitch.withgoogle.com/projects/6960462687788289405?
 
 ## 현재 상태
 
-콘셉트 첨부와 7개 화면 생성 요청 완료. 내보낸 파일은 다운로드 후 별도 기록합니다.
+7개 화면 생성과 다운로드 완료.
+
+- `focus-forest-final/`: 최종 7화면 HTML + PNG + DESIGN.md
+- `focus-forest-final/index.html`: 화면 모아보기 (별도 작성한 로컬 갤러리)
+- `focus-forest-design.zip`: 최종 7화면 배포 묶음
+- `stitch-full-export.zip`: 초안 4화면과 참고 이미지까지 포함한 Stitch 원본 ZIP
+- `stitch-export/`: 원본 ZIP 압축 해제본
+- `stitch-project-proof.png`: Chrome의 실제 생성 완료 화면
+
+CLI 설치나 API 인증 없이, 사용자가 열어 둔 Chrome의 Stitch 웹 UI를 사용했습니다.

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_blank" name="shell-type"/><title>집중의 숲 - 시작하기</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-high":"#ebe8df","on-surface-variant":"#424843","inverse-surface":"#31312b","on-secondary":"#ffffff","on-primary":"#ffffff","tertiary":"#2f1c00","inverse-primary":"#abcfb8","on-error":"#ffffff","primary-fixed-dim":"#abcfb8","outline-variant":"#c1c8c2","on-tertiary":"#ffffff","background":"#fcf9f0","surface-container-highest":"#e5e2da","surface-container-lowest":"#ffffff","secondary-fixed":"#cee9da","surface-bright":"#fcf9f0","tertiary-fixed-dim":"#feb956","inverse-on-surface":"#f3f1e8","on-primary-fixed":"#002113","on-background":"#1c1c17","secondary-fixed-dim":"#b3ccbf","outline":"#727973","on-primary-fixed-variant":"#2d4d3c","on-secondary-fixed":"#092017","on-primary-container":"#83a590","on-surface":"#1c1c17","error":"#ba1a1a","primary":"#032517","secondary-container":"#cee9da","surface-dim":"#dcdad1","on-error-container":"#93000a","error-container":"#ffdad6","tertiary-fixed":"#ffddb4","on-tertiary-container":"#d09131","tertiary-container":"#4b2f00","on-tertiary-fixed-variant":"#633f00","secondary":"#4c6358","surface-container-low":"#f6f3ea","surface-container":"#f1eee5","surface-tint":"#456553","primary-container":"#1b3b2b","surface-variant":"#e5e2da","primary-fixed":"#c7ebd4","on-secondary-fixed-variant":"#354c41","surface":"#fcf9f0","on-tertiary-fixed":"#291800","on-secondary-container":"#52695e"},borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},spacing:{"space-xs":"0.375rem","margin-mobile":"1.25rem","gutter-mobile":"1rem","space-sm":"0.75rem","margin":"2.5rem","space-xl":"3rem","gutter":"1.5rem","space-lg":"2rem","space-md":"1.25rem"},fontFamily:{"label-lg":["Plus Jakarta Sans"],"display-timer-mobile":["Plus Jakarta Sans"],"body-sm":["Noto Sans"],"body-md":["Noto Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"body-lg":["Noto Sans"],"label-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-md":["Noto Sans"],"display-timer":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},fontSize:{"label-lg":["16px",{"lineHeight":"22px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-timer-mobile":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"body-sm":["13px",{"lineHeight":"20px","letterSpacing":"0.01em","fontWeight":"400"}],"body-md":["15px",{"lineHeight":"25px","letterSpacing":"0em","fontWeight":"400"}],"headline-xl-mobile":["28px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl":["36px",{"lineHeight":"46px","letterSpacing":"-0.025em","fontWeight":"700"}],"body-lg":["17px",{"lineHeight":"28px","letterSpacing":"-0.005em","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-md":["14px",{"lineHeight":"18px","letterSpacing":"0em","fontWeight":"600"}],"headline-md":["20px",{"lineHeight":"30px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-timer":["84px",{"lineHeight":"96px","letterSpacing":"-0.04em","fontWeight":"700"}],"headline-lg":["26px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen flex items-center justify-center p-gutter-mobile"><main class="w-full max-w-md mx-auto flex flex-col items-center justify-center"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden bg-surface-container-lowest rounded-xl p-space-md sm:p-space-lg shadow-xl flex flex-col items-center">
+<!-- Ambient Clay Glow Elements behind illustration -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 w-56 h-56 rounded-full bg-secondary-fixed/50 blur-3xl pointer-events-none"></div>
+<div class="absolute top-28 right-4 w-28 h-28 rounded-full bg-tertiary-fixed/40 blur-2xl pointer-events-none"></div>
+<!-- Soft Clay Tree Icon Badge (Inspired by prompt reference emblem) -->
+<div class="relative z-10 mb-space-md flex flex-col items-center">
+<div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-surface-container-low p-2 shadow-[inset_0_2px_6px_rgba(20,40,29,0.06),0_8px_20px_rgba(27,59,43,0.08)] flex items-center justify-center transition-transform hover:scale-105 duration-300">
+<!-- Abstract Clay Geometric Tree Illustration -->
+<svg class="w-20 h-20 sm:w-24 sm:h-24 drop-shadow-sm" fill="none" viewbox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+<!-- Trunk -->
+<rect fill="#032517" height="28" rx="4" width="12" x="54" y="68"></rect>
+<!-- Main Canopy Outer Ring -->
+<circle cx="60" cy="50" fill="#1b3b2b" r="38"></circle>
+<!-- Inner Top Leaf Clay Shape -->
+<ellipse cx="60" cy="42" fill="#83a590" rx="20" ry="24"></ellipse>
+<!-- Bright Focal Core -->
+<circle cx="60" cy="48" fill="#fcf9f0" r="17"></circle>
+<!-- Small Earth/Sun Orb -->
+<circle cx="44" cy="74" fill="#feb956" r="8"></circle>
+<!-- Gentle Dew Drop Orb -->
+<circle cx="76" cy="71" fill="#cee9da" r="9"></circle>
+</svg>
+</div>
+<!-- Forest Whispering Indicator -->
+<div class="mt-space-xs inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant shadow-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-sm text-label-sm">로그인 없는 안전한 공간</span>
+</div>
+</div>
+<!-- Title and Subtitle -->
+<div class="relative z-10 text-center max-w-sm mb-space-md">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-space-xs">
+        나만의 작은 숲에서 시작하는 깊은 몰입
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        복잡한 회원가입 없이, 숲에서 불릴 따뜻한 닉네임만 정해주세요.
+      </p>
+</div>
+<!-- Input Form Section -->
+<div class="relative z-10 w-full flex flex-col gap-space-md">
+<!-- Nickname Input Pill Container -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-primary flex items-center justify-between px-1" for="nickname-input">
+<span>숲의 호칭 (닉네임)</span>
+<span class="font-body-sm text-body-sm text-outline">최대 10자</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-secondary pointer-events-none" style="font-variation-settings: 'FILL' 1;">
+            psychiatry
+          </span>
+<input class="w-full h-14 pl-12 pr-12 rounded-full bg-surface-container font-body-md text-body-md text-on-surface placeholder:text-outline focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary/20 shadow-[inset_0_2px_4px_rgba(20,40,29,0.06)] transition-all duration-200" id="nickname-input" maxlength="10" placeholder="예: 고요한참나무, 햇살다람쥐" type="text"/>
+<button aria-label="입력 지우기" class="hidden absolute right-3 w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant hover:text-primary items-center justify-center transition-colors" id="clear-btn" onclick="clearInput()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<!-- Quick Suggestion Nickname Chips -->
+<div class="flex flex-col gap-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant px-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+          마음에 드는 이름을 골라보세요
+        </span>
+<div class="flex flex-wrap gap-2">
+<button class="chip-btn px-3 py-1.5 rounded-full bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-secondary-fixed active:scale-95 transition-all shadow-sm flex items-center gap-1" onclick="applyNickname('초록바람')" type="button">
+<span>🍃</span> 초록바람
+          </button>
+<button class="chip-btn px-3 py-1.5 rounded-full bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-secondary-fixed active:scale-95 transition-all shadow-sm flex items-center gap-1" onclick="applyNickname('안개숲')" type="button">
+<span>🌫️</span> 안개숲
+          </button>
+<button class="chip-btn px-3 py-1.5 rounded-full bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-secondary-fixed active:scale-95 transition-all shadow-sm flex items-center gap-1" onclick="applyNickname('달빛새싹')" type="button">
+<span>🌱</span> 달빛새싹
+          </button>
+<button class="chip-btn px-3 py-1.5 rounded-full bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-secondary-fixed active:scale-95 transition-all shadow-sm flex items-center gap-1" onclick="applyNickname('고요한이끼')" type="button">
+<span>🌿</span> 고요한이끼
+          </button>
+<button class="chip-btn px-3 py-1.5 rounded-full bg-surface-container text-on-secondary-container font-label-md text-label-md hover:bg-secondary-fixed active:scale-95 transition-all shadow-sm flex items-center gap-1" onclick="applyNickname('아침이슬')" type="button">
+<span>💧</span> 아침이슬
+          </button>
+</div>
+</div>
+<!-- Seed Companion Selection -->
+<div class="flex flex-col gap-2 mt-1">
+<label class="font-label-md text-label-md text-primary px-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">nature</span>
+          첫 번째 함께 자랄 씨앗 선택
+        </label>
+<div class="grid grid-cols-3 gap-2">
+<!-- Seed Card 1 -->
+<button class="seed-card flex flex-col items-center justify-center p-3 rounded-2xl bg-secondary-container text-primary font-label-sm text-label-sm shadow-[0_4px_12px_rgba(27,59,43,0.08)] transition-all duration-200 text-center" id="seed-card-0" onclick="selectSeed(0)" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-1.5 shadow-sm text-lg">
+              🌰
+            </div>
+<span class="font-label-md text-label-md font-bold">느티나무</span>
+<span class="text-[11px] text-on-secondary-container opacity-90 mt-0.5">단단한 기둥</span>
+</button>
+<!-- Seed Card 2 -->
+<button class="seed-card flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all duration-200 text-center" id="seed-card-1" onclick="selectSeed(1)" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-1.5 shadow-sm text-lg">
+              ✨
+            </div>
+<span class="font-label-md text-label-md font-bold">은빛자작나무</span>
+<span class="text-[11px] text-on-surface-variant opacity-80 mt-0.5">맑은 고요</span>
+</button>
+<!-- Seed Card 3 -->
+<button class="seed-card flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all duration-200 text-center" id="seed-card-2" onclick="selectSeed(2)" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-1.5 shadow-sm text-lg">
+              🌲
+            </div>
+<span class="font-label-md text-label-md font-bold">아기솔방울</span>
+<span class="text-[11px] text-on-surface-variant opacity-80 mt-0.5">상쾌한 피톤치드</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<div class="flex flex-col gap-space-xs mt-space-sm">
+<button class="w-full h-14 rounded-full bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-[0_10px_28px_-4px_rgba(3,37,23,0.35),0_3px_8px_-1px_rgba(3,37,23,0.2)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.99] transition-all duration-200 cursor-pointer" id="enter-forest-btn" onclick="handleStartForest()" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">
+            forest
+          </span>
+<span>숲으로 들어가기 (무료)</span>
+</button>
+<!-- Reassurance Footer Note -->
+<p class="font-body-sm text-body-sm text-outline text-center flex items-center justify-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+<span>데이터는 이 기기에 안전하게 보관됩니다 🍃</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  const nicknameInput = document.getElementById('nickname-input');
+  const clearBtn = document.getElementById('clear-btn');
+  let selectedSeedIndex = 0;
+
+  function updateClearBtn() {
+    if (nicknameInput.value.trim().length > 0) {
+      clearBtn.classList.remove('hidden');
+      clearBtn.classList.add('flex');
+    } else {
+      clearBtn.classList.add('hidden');
+      clearBtn.classList.remove('flex');
+    }
+  }
+
+  nicknameInput.addEventListener('input', updateClearBtn);
+
+  function clearInput() {
+    nicknameInput.value = '';
+    updateClearBtn();
+    nicknameInput.focus();
+  }
+
+  function applyNickname(name) {
+    nicknameInput.value = name;
+    updateClearBtn();
+    nicknameInput.focus();
+  }
+
+  function selectSeed(index) {
+    selectedSeedIndex = index;
+    const cards = [0, 1, 2];
+    cards.forEach((i) => {
+      const card = document.getElementById(`seed-card-${i}`);
+      if (i === index) {
+        card.className = "seed-card flex flex-col items-center justify-center p-3 rounded-2xl bg-secondary-container text-primary font-label-sm text-label-sm shadow-[0_4px_12px_rgba(27,59,43,0.08)] transition-all duration-200 text-center";
+      } else {
+        card.className = "seed-card flex flex-col items-center justify-center p-3 rounded-2xl bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all duration-200 text-center";
+      }
+    });
+  }
+
+  function handleStartForest() {
+    let name = nicknameInput.value.trim();
+    if (!name) {
+      name = "고요한참나무";
+      nicknameInput.value = name;
+    }
+    const seedNames = ['느티나무 씨앗', '은빛 자작나무', '아기 솔방울'];
+    const selectedSeed = seedNames[selectedSeedIndex];
+    
+    // Tactile click feedback
+    const btn = document.getElementById('enter-forest-btn');
+    btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">sync</span><span>숲길을 여는 중...</span>`;
+    btn.disabled = true;
+
+    setTimeout(() => {
+      // Local storage persist for instant guest onboarding
+      try {
+        localStorage.setItem('forest_user_nickname', name);
+        localStorage.setItem('forest_active_seed', selectedSeed);
+      } catch (e) {
+        // Safe fallback
+      }
+      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check</span><span>환영합니다, ${name}님</span>`;
+    }, 600);
+  }
+</script></main></body></html>
