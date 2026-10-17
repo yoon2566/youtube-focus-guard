@@ -17,13 +17,13 @@ test('only host starts after all ready',()=>{
  x.send(1,{type:'ready',ready:false});assert.throws(()=>x.send(0,{type:'start'}),/준비/);
  x.send(1,{type:'ready',ready:true});x.send(0,{type:'start'});assert.equal(x.room.data.status,'running');
 });
-test('one hidden member pauses entire room; only explicit return resumes',()=>{
+test('one hidden member resets entire room; only explicit return restarts',()=>{
  const x=setup();x.send(0,{type:'start'});
- x.send(1,{type:'active',active:false},4000);assert.equal(x.room.snapshot(6000).elapsedMs,3000);
+ x.send(1,{type:'active',active:false},4000);assert.equal(x.room.snapshot(6000).elapsedMs,0);
  x.send(0,{type:'heartbeat'},6000);assert.equal(x.room.data.status,'paused');
  x.send(1,{type:'heartbeat'},6000);assert.equal(x.room.data.status,'paused');
  x.send(1,{type:'active',active:true},6000);assert.equal(x.room.data.status,'running');
- assert.equal(x.room.snapshot(8000).elapsedMs,5000);
+ assert.equal(x.room.snapshot(8000).elapsedMs,2000);
 });
 test('all hidden members must return',()=>{
  const x=setup();x.send(0,{type:'start'});x.send(0,{type:'active',active:false},2000);x.send(1,{type:'active',active:false},2100);
@@ -38,10 +38,10 @@ test('disconnect and reconnect never silently resume',()=>{
  // Close from stale connection must not disconnect the replacement.
  x.room.disconnect(x.members[1].id,'c1',3600);assert.equal(x.members[1].connected,true);
 });
-test('silent lost heartbeat rolls back to last verified presence',()=>{
+test('silent lost heartbeat resets progress',()=>{
  const x=setup();x.send(0,{type:'start'});x.send(0,{type:'heartbeat'},7000);x.send(1,{type:'heartbeat'},7000);
  x.send(0,{type:'heartbeat'},12000);x.room.tick(7000+HEARTBEAT_TIMEOUT+1);
- assert.equal(x.room.data.status,'paused');assert.equal(x.room.data.elapsedMs,6000);
+ assert.equal(x.room.data.status,'paused');assert.equal(x.room.data.elapsedMs,0);
 });
 test('abort affects all and no points',()=>{
  const x=setup();x.send(0,{type:'start'});x.send(1,{type:'abort'},2000);

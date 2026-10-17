@@ -1,58 +1,64 @@
-# 유튜브 집중 가드
+# 집중의 숲 🌳
 
-유튜브 Android 앱을 실행하면 홈 화면으로 이동시키는 자기통제용 해커톤 MVP.
+**[지금 실행하기](https://focus-forest-hackathon.yoon2566.workers.dev)** · [소스](web) · [디자인 시안](design/focus-forest-final)
 
-## 개발 상태
+혼자 또는 최대 4명이 함께 집중해 나무를 키우는 웹앱입니다. 초대코드로 서로 다른 기기·네트워크에서도 같은 방에 참여합니다.
 
-- 접근성 이벤트 기반 유튜브 감지 및 홈 이동 코드 구현
-- 차단 ON/OFF, 권한 안내, 로컬 감지 기록 구현
-- APK 빌드 성공, APK 서명 검증 성공, Android Lint 오류 0개 (경고 5개)
-- 차단 판별 로직 테스트 7개 통과
-- **실기기 테스트: 사용자 확인 대기. 실기기 동작 검증 완료가 아닙니다.**
+## 사용 흐름
 
-[APK 다운로드](https://github.com/yoon2566/youtube-focus-guard/releases/download/v0.1.0/youtube-focus-guard-v0.1.0.apk) · [릴리스](https://github.com/yoon2566/youtube-focus-guard/releases/tag/v0.1.0)
+1. 닉네임 입력 → **혼자 하기** 또는 **친구와 방 만들기**
+2. 목표와 집중 시간 선택: 10 / 25 / 50분, 빠른 검증용 **1분 체험**
+3. 함께하기: 6자리 초대코드 공유 → 모두 **준비 완료** → 방장이 시작
+4. 집중 유지 → 나무 성장 → 완료 시 포인트 지급 및 **나의 숲**에 기록
 
-## 설치 및 사용
+**다른 탭·앱으로 이동하면 진행 시간이 초기화됩니다.** 함께하기에서는 한 명이 이탈해도 모두 초기화됩니다. 이탈한 사람이 돌아와 **처음부터 시작**을 눌러야 다시 시작합니다. 여러 명이 이탈했다면 전원이 돌아와 눌러야 합니다. 새로고침·연결 끊김도 같은 규칙을 적용합니다. 누군가 **그만하기 → 도전 종료하기**를 누르면 공동 도전이 끝나고 완료 보상은 없습니다.
 
-Android 8.0 이상. Releases의 APK를 휴대폰에서 내려받아 설치합니다.
-접근성 설정에서 **유튜브 집중 가드**를 허용하고 앱에서 **차단 ON으로 전환**을 누릅니다.
-**유튜브 열어 테스트** 또는 홈 화면의 유튜브 아이콘으로 실행해 홈으로 돌아오는지 확인합니다.
-**차단 OFF로 전환**하면 유튜브를 정상 이용할 수 있습니다.
+## 구현 기능
 
-APK 설치 후 접근성 권한이 제한되면 설정 → 앱 → 유튜브 집중 가드 → 메뉴의 **제한된 설정 허용**을 확인합니다. 제조사와 OS에 따라 다릅니다.
+- 실시간 공동방: 최대 4명, 준비 상태·공동 타이머·초대코드
+- 보상: 집중 1분당 기본 2P × 인원 배율 (1명 ×1 / 2명 ×1.2 / 3–4명 ×1.5), 반올림
+- 서버가 시간과 완료를 판정하며, 중단·실패에는 완료 보상 없음
+- 집중 중 화면 켜짐 유지 요청 및 지원/실패 상태 표시
+- 잔잔한 명상 음악·빗소리·숲소리 합성 사운드, 음량 조절
+- 나무 성장과 기기별 숲 기록. 1분 체험은 일반 집중 통계와 별도 표시
+- 모바일 폭에 맞춘 반응형 화면
 
-## 구현과 제한
+## 실행 및 배포
 
-- 대상 패키지: `com.google.android.youtube`만 정확히 일치할 때 처리
-- `TYPE_WINDOW_STATE_CHANGED` → `performGlobalAction(GLOBAL_ACTION_HOME)`
-- 기본 차단 OFF. ON/OFF 설정은 앱 재실행 후에도 유지
-- 홈 요청 수락은 Android API 반환값이며 실제 화면 이동 성공을 독립적으로 증명하지는 않음
-- 인터넷 권한, 화면 내용 조회 권한, 입력 내용 수집 없음
-- 브라우저 유튜브, YouTube Music, PIP 및 백그라운드 재생 완전 차단은 지원하지 않음
-- 접근성 해제, 앱 강제 종료/삭제 등에 대한 우회 방지는 지원하지 않음
-- 재부팅 및 제조사 절전 정책에 따른 동작은 별도 검증 필요
-
-## 빌드
-
-JDK 17, Android SDK Platform 35, Build Tools 35.0.0, Gradle 8.13, AGP 8.9.2.
-`ANDROID_HOME` 또는 git에서 제외된 `local.properties`의 `sdk.dir`로 SDK 위치를 지정합니다.
+Node.js 22 이상과 npm을 사용합니다. Python은 필요하지 않습니다.
 
 ```powershell
-.\gradlew.bat assembleDebug lintDebug
+cd web
+npm ci
+npm run dev
 ```
 
-출력: `app/build/outputs/apk/debug/app-debug.apk` (개발용 서명 APK).
-Gradle Wrapper가 포함되어 있습니다. Windows에서 한글 경로 오류가 발생하면 영문 경로에 체크아웃하거나 `scripts/build-windows.ps1`을 사용하세요.
+로컬 주소: `http://127.0.0.1:8787`. 서로 다른 기기에서 함께하려면 위 공개 주소를 사용하세요.
 
-## 실기기 확인 항목
+```powershell
+npm test
+node tests/integration.mjs http://127.0.0.1:8787 --complete
+npm run deploy
+```
 
-- [ ] 설치 및 앱 실행
-- [ ] 접근성 권한 허용
-- [ ] OFF 상태에서 유튜브 정상 실행
-- [ ] ON 상태에서 유튜브 실행 시 홈 이동 (3회 반복)
-- [ ] OFF로 바꾼 뒤 정상 실행 복구
-- [ ] 설정 앱과 다른 앱 정상 사용
-- [ ] 가드 앱을 다시 열었을 때 ON/OFF 유지
+배포는 Cloudflare 계정 인증이 필요합니다. `wrangler login` 후 자신의 Worker 이름으로 `web/wrangler.jsonc`를 조정하세요. 클라이언트 파일에 배포 인증정보를 넣지 않습니다. `--complete` 검증에는 실제 60초가 걸립니다.
 
-USB 또는 같은 Wi-Fi의 무선 ADB가 없는 경우 사용자 수동 테스트 결과를 별도로 기록합니다.
-기기 모델, Android 버전, 수행 항목과 관찰 결과가 없는 상태는 실기기 검증 완료로 표시하지 않습니다.
+## 구조
+
+- `web/public/`: HTML·CSS·JavaScript, 나무 SVG, WebAudio, Page Visibility, Screen Wake Lock
+- `web/src/room.js`: 순수 상태 엔진, 최대 인원·초기화·재시작·완료·보상 규칙
+- `web/src/worker.js`: Cloudflare Worker + Durable Objects + WebSocket
+- `web/tests/`: 상태 엔진 테스트와 4개 WebSocket 연결 통합 테스트
+- `.github/workflows/web.yml`: 문법, 테스트, Worker 빌드 검증
+
+각 방은 서버에 2시간 유지되며 이후 삭제됩니다. 방 인증 토큰은 참가한 탭의 sessionStorage에 저장됩니다. 닉네임·목표·방 상태는 서버에, 완성한 숲 기록은 해당 브라우저 localStorage에 저장됩니다. 별도 회원가입·계정 간 기록 동기화는 없습니다.
+
+## 검증과 한계
+
+[검증 기록](web/docs/VERIFICATION.md)을 확인하세요. 공개 서버에서 4명 연결, 다섯 번째 입장 차단, 공동 초기화, 재접속, 실제 1분 완료와 포인트 지급을 자동 검증했습니다. 데스크톱 브라우저로 입장·준비·공동 집중·화면 켜짐 상태도 확인했습니다.
+
+웹앱은 YouTube 등 다른 앱을 강제로 막지 않습니다. 페이지가 숨겨지는 이벤트를 감지하며, 브라우저 분할 화면처럼 페이지가 계속 보이면 이탈로 판단하지 못할 수 있습니다. 서버가 연결 손실을 감지하는 데 최대 약 12초가 걸릴 수 있습니다. 화면 켜짐 유지는 HTTPS 및 브라우저·기기의 지원과 절전 정책에 따라 달라집니다. **Android 실기기에서의 검증은 아직 하지 않았습니다.** 브라우저 데이터를 삭제하면 숲 기록도 삭제됩니다.
+
+## 초기 Android 프로토타입
+
+프로젝트 전환 전 제작한 Android APK와 원본 소스는 보존했습니다. 현재 제출 앱은 위 웹앱입니다. [Android 설치·빌드 안내](README.android.md) · [기존 APK 릴리스](https://github.com/yoon2566/youtube-focus-guard/releases/tag/v0.1.0)

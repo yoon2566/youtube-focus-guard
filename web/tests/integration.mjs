@@ -24,7 +24,9 @@ try{
  await wait(()=>a.state.members.every(m=>m.ready));a.send({type:'start'});
  await wait(()=>participants.every(c=>c.state.status==='running'));
  assert.equal((await api(`/api/rooms/${first.code}/join`,{nickname:'late'})).status,400);
+ await sleep(1200);
  participants[1].send({type:'active',active:false});await wait(()=>participants.every(c=>c.state.status==='paused'));
+ assert.ok(participants.every(c=>c.state.elapsedMs===0));
  const stopped=a.state.elapsedMs;await sleep(1100);a.send({type:'sync'});await sleep(150);assert.equal(a.state.elapsedMs,stopped);
  participants[2].send({type:'active',active:false});await sleep(120);
  participants[1].send({type:'active',active:true});await sleep(120);assert.equal(a.state.status,'paused');
@@ -33,7 +35,7 @@ try{
  const replacement=await connect(old.session);assert.equal(replacement.state.status,'paused');
  replacement.send({type:'active',active:true});await wait(()=>a.state.status==='running');
  replacement.send({type:'abort'});await wait(()=>a.state.status==='aborted');assert.equal(a.state.points,0);
- console.log('PASS: HTTP + four WebSocket clients, capacity, host readiness, late join, shared pause, explicit resume, reconnect, abort');
+ console.log('PASS: HTTP + four WebSocket clients, capacity, host readiness, late join, shared timer reset, explicit restart, reconnect, abort');
  if(process.argv.includes('--complete')){
   const solo=await connect(await api('/api/rooms',{nickname:'TEST 완료',mode:'solo',durationMinutes:1,goal:'완료 검증'}));
   solo.send({type:'ready',ready:true});await wait(()=>solo.state.members[0].ready);solo.send({type:'start'});

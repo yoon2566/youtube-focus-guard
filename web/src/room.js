@@ -31,7 +31,7 @@ export class RoomCore {
   connect(memberId, connectionId, now=Date.now()) {
     this.tick(now);
     const m=this.member(memberId);
-    if(this.data.status==='running') this.pause(now,'친구가 다시 연결했어요. 준비되면 재개해 주세요.');
+    this.reset('친구가 다시 연결해 집중 시간이 초기화됐어요. 모두 돌아오면 처음부터 시작해요.');
     const first=!m.everConnected;
     Object.assign(m,{connected:true,active:first && this.data.status==='lobby',ready:false,lastSeenAt:now,connectionId,everConnected:true});
   }
@@ -44,7 +44,7 @@ export class RoomCore {
     const m=this.data.members.find(x=>x.id===memberId);
     if(!m || m.connectionId!==connectionId) return;
     this.tick(now);
-    this.pause(now,`${m.nickname}님의 연결을 기다리고 있어요.`);
+    this.reset(`${m.nickname}님의 연결이 끊겨 모두의 집중 시간이 초기화됐어요.`);
     Object.assign(m,{connected:false,active:false,ready:false,connectionId:null});
   }
   pause(now, reason) {
@@ -53,6 +53,11 @@ export class RoomCore {
       d.elapsedMs=Math.min(d.durationMs,d.elapsedMs+Math.max(0,now-d.runningSince));
       d.runningSince=null; d.status='paused'; d.reason=reason;
     }
+  }
+  reset(reason) {
+    const d=this.data;
+    if(!['running','paused'].includes(d.status)) return;
+    d.elapsedMs=0; d.runningSince=null; d.status='paused'; d.reason=reason;
   }
   allActive() { return this.data.members.length>0 && this.data.members.every(m=>m.connected&&m.active); }
   tick(now=Date.now()) {
@@ -63,8 +68,8 @@ export class RoomCore {
     }
     const stale=d.members.filter(m=>m.connected && now-m.lastSeenAt>HEARTBEAT_TIMEOUT);
     if(stale.length) {
-      // Credit no time after the last known response of a silently lost client.
-      this.pause(Math.min(...stale.map(m=>m.lastSeenAt)), '연결이 끊긴 친구를 기다리고 있어요.');
+      // A lost client may have left the page without delivering visibilitychange.
+      this.reset('연결이 끊겨 모두의 집중 시간이 초기화됐어요.');
       for(const m of stale) { m.connected=false; m.active=false; m.ready=false; }
     }
     if(d.status==='running' && d.elapsedMs+Math.max(0,now-d.runningSince)>=d.durationMs) {
@@ -89,8 +94,8 @@ export class RoomCore {
     if(message.type==='active') {
       if(typeof message.active!=='boolean') throw new Error('상태를 확인해 주세요.');
       m.lastSeenAt=now; m.connected=true; m.active=message.active;
-      if(!m.active) { m.ready=false; this.pause(now,`${m.nickname}님이 잠시 자리를 비웠어요.`); }
-      else if(d.status==='paused' && this.allActive()) { d.status='running'; d.runningSince=now; d.reason='다시 함께 자라는 중'; }
+      if(!m.active) { m.ready=false; this.reset(`${m.nickname}님이 집중을 벗어나 모두의 시간이 초기화됐어요.`); }
+      else if(d.status==='paused' && this.allActive()) { d.status='running'; d.runningSince=now; d.reason='처음부터 다시 함께 자라는 중'; }
     } else if(message.type==='ready') {
       if(d.status!=='lobby') throw new Error('이미 시작한 도전입니다.');
       if(!m.connected || !m.active) throw new Error('먼저 화면으로 돌아와 주세요.');
